@@ -16,7 +16,7 @@ Added .env, node_modules, and dist to my .gitignore before pushing any changes t
 
 Backend Framework: Node.js with Express.js
 Database: Json File for storing account data
-API Documentation: Swagger for clear API documentation
+API Documentation: Postman for clear API documentation
 Validation: Zod for user's Json payload validation
 Version Control: Git and GitHub for collaborative development
 Deployment: Render for hosting
