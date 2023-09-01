@@ -5,7 +5,7 @@
 ## Project Overview:
 The Bank Account Management API project aims to create a robust and secure system for managing bank accounts. It involves three key endpoints: creating a bank account, resolving an account, and fetching all bank accounts. Below is the design setup for this project:
 
-Note: This repository includes the [postman collection for the finished API](postman_collection.json)
+Note: This repository includes the [postman collection for the finished API](https://documenter.getpostman.com/view/27252655/2s9Y5ctLU1)
 
 Added .env, node_modules, and dist to my .gitignore before pushing any changes to your repository. 
 
