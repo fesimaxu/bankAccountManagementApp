@@ -1,0 +1,12 @@
+[
+  {
+    "id": "e38a3367-a7c9-4edb-ab0b-867cc766c1c2",
+    "accountName": "Uchenna Igwe",
+    "accountNumber": "0151001751",
+    "dateOfBirth": "15 Oct, 1999",
+    "accountType": "Savings",
+    "balance": 20000,
+    "createdAt": "2023-09-01T00:47:42.021Z",
+    "updatedAt": "2023-09-01T00:47:42.021Z"
+  }
+]
