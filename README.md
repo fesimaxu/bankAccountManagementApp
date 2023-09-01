@@ -1,4 +1,6 @@
-# Build a REST API with Node.js, JSON File & TypeScript
+# BANK 
+
+# A REST API with Node.js, JSON File & TypeScript
 
 Note: This repository includes the [postman collection for the finished API](postman_collection.json)
 

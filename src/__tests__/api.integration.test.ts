@@ -5,7 +5,7 @@ import { userData, userDetails } from "../utils/testData";
 
 describe("Create a Bank Account Endpoint", ()=>{
 
-    it("User should be able to create account of the app", async ()=>{
+    it("User should be able to create account on the app", async ()=>{
         const user =  await supertest(app).post('/bank/createaccount')
             .send(userDetails)
     
@@ -52,11 +52,15 @@ describe("Resolve a Bank Account Endpoint", () =>{
         const user =  await supertest(app).post('/bank/createaccount')
         .send(userDetails)
 
+    
         //test for success
         const userInfo = user.body.data
+    
 
-        const { body, statusCode } = await supertest(app).get("bank/accounts/accountnumber")
-        .send(userInfo.accountName);
+        const { body, statusCode } = await supertest(app).get("/bank/accounts/accountnumber")
+        .send({accountNumber: userInfo.accountNumber})
+
+       
 
         const { data } = body
      
@@ -75,22 +79,23 @@ describe("Resolve a Bank Account Endpoint", () =>{
 
 
 describe("Fetch All Bank Accounts", () =>{
-    it("Get Bank all user's details", async () => {
+    it("Get Bank all users details", async () => {
 
-        const { body, statusCode } = await supertest(app).get("bank/accounts")
+        const { body, statusCode } = await supertest(app).get("/bank/accounts")
 
         const { data } = body
+        expect(data).toEqual(
         expect.arrayContaining([
-            expect(data).toEqual(
+            
                 expect.objectContaining({
                     accountName: expect.any(String),
                     accountNumber: expect.any(String),
                     accountType: expect.any(String),
                     balance: expect.any(Number)
                 })
-            )
+            
         ])
-      
+        )
 
         expect(statusCode).toBe(200);
     })

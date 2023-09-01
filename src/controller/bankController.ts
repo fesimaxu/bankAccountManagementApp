@@ -23,18 +23,18 @@ export const createUserAccountDetail = (
     const { accountName, dateOfBirth, accountType, balance } = req.body;
 
 
-    const validateInput = inputSchema.parse({
+    const error = inputSchema.safeParse({
       accountName,
       dateOfBirth,
       accountType,
       balance,
     });
 
-    if (!validateInput) {
-      return res.status(400).json({
+    if (error.success === false) {
+      return res.status(400).send({
         status: "error",
         method: req.method,
-        message: "Invalid input details",
+        message: error.error.issues
       });
     }
 
@@ -107,12 +107,16 @@ export const getAccountDetailsByAccountNumber = (
 
   bankData = JSON.parse(data);
 
+ 
+
+
+
   const isExisting = bankData.filter((account: AccountDetails) => {
 
     return account.accountNumber === accountNumber
   })
 
-  console.log(isExisting)
+ 
 
   if (isExisting.length === 0) {
     res.status(404).send({
