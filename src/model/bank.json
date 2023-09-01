@@ -1,12 +1,12 @@
 [
   {
-    "id": "e38a3367-a7c9-4edb-ab0b-867cc766c1c2",
-    "accountName": "Uchenna Igwe",
-    "accountNumber": "0151001751",
-    "dateOfBirth": "15 Oct, 1999",
+    "id": "feee9e7e-0026-43d6-88fb-82c3b2a5b845",
+    "accountName": "Igwe Henry",
+    "accountNumber": "0151003494",
+    "dateOfBirth": "30th Sept, 1980",
     "accountType": "Savings",
-    "balance": 20000,
-    "createdAt": "2023-09-01T00:47:42.021Z",
-    "updatedAt": "2023-09-01T00:47:42.021Z"
+    "balance": 3000,
+    "createdAt": "2023-09-01T03:27:28.217Z",
+    "updatedAt": "2023-09-01T03:27:28.217Z"
   }
 ]

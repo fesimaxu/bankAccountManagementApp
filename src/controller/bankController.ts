@@ -11,6 +11,7 @@ import {
 } from "../utils/services/createDB";
 import { generateAccountNumber, excludeProperties, excludePropertiesFromArray } from "../utils/services/service";
 
+// Create a Bank Account Endpoint
 export const createUserAccountDetail = (
   req: Request,
   res: Response,
@@ -81,36 +82,8 @@ export const createUserAccountDetail = (
   }
 };
 
-export const getAllAcountDetails = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  let bankData: AccountDetails[] = [];
 
-  const data = readFromDatabase(bankFile);
-
-  if (!data) {
-    return res.status(400).json({
-      status: "error",
-      method: req.method,
-      message: "Database is empty",
-    });
-  }
-
-  bankData = JSON.parse(data);
-
-  const excludeKeys = ["id","dateOfBirth", "createdAt", "updatedAt"];
-  const updatedDetails = excludePropertiesFromArray(bankData, excludeKeys);
-
-  res.status(200).json({
-    status: "success",
-    method: req.method,
-    message: "all account details successfully found",
-    data: updatedDetails,
-  });
-};
-
+// Resolve a Bank Account Endpoint
 export const getAccountDetailsByAccountNumber = (
   req: Request,
   res: Response,
@@ -167,4 +140,37 @@ export const getAccountDetailsByAccountNumber = (
   })
 
 
+};
+
+
+
+// Fetch All Bank Accounts
+export const getAllAcountDetails = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  let bankData: AccountDetails[] = [];
+
+  const data = readFromDatabase(bankFile);
+
+  if (!data) {
+    return res.status(400).json({
+      status: "error",
+      method: req.method,
+      message: "Database is empty",
+    });
+  }
+
+  bankData = JSON.parse(data);
+
+  const excludeKeys = ["id","dateOfBirth", "createdAt", "updatedAt"];
+  const updatedDetails = excludePropertiesFromArray(bankData, excludeKeys);
+
+  res.status(200).json({
+    status: "success",
+    method: req.method,
+    message: "all account details successfully found",
+    data: updatedDetails,
+  });
 };
