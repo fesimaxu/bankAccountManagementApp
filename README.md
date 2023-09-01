@@ -1,4 +1,4 @@
-# BANK 
+# BANK ACCOUNT MANAGEMENT APP
 
 # A REST API with Node.js, JSON File & TypeScript
 
@@ -36,14 +36,8 @@ Added .env, node_modules, and dist to my .gitignore before pushing any changes t
    2. Create routes function
    3. Setup json file creation
    4. Setup logger
-   5. Validate request middleware
-   1. Create user model
-   2. Create user endpoint
-   3. Create user session
-   4. Deserialize user middleware (refresh tokens)
-   5. Get sessions
-   6. Delete session
-   7. Require user middleware
+   5. Validate request middleware using Zod
+
 2. Product resource
    1. Create Account
    2. Resolve Account by Account Name
