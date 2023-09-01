@@ -10,6 +10,7 @@ const cors_1 = __importDefault(require("cors"));
 const config_1 = __importDefault(require("./config"));
 const errorMessages_1 = require("./middleware/errorMessages");
 const bankRouter_1 = __importDefault(require("./routes/bankRouter"));
+const healthRouter_1 = __importDefault(require("./routes/healthRouter"));
 const app = (0, express_1.default)();
 const { PORT } = config_1.default;
 // middlewares
@@ -19,6 +20,7 @@ app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cors_1.default)());
 // Routes
+app.use('/', healthRouter_1.default);
 app.use('/api', bankRouter_1.default);
 // error middlewares
 app.all('*', errorMessages_1.error404);

@@ -5,6 +5,7 @@ import cors from "cors";
 import config from "./config";
 import { error404, error500 } from "./middleware/errorMessages";
 import bankRouter from "./routes/bankRouter";
+import healthCheckRouter from "./routes/healthRouter"
 
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // Routes
+app.use('/', healthCheckRouter);
 app.use('/api', bankRouter);
 
 
@@ -30,6 +32,9 @@ app.use(error500);
 
 // active port
 const BUILD_PORT = PORT;
+
+
+
 
 
 app.listen(BUILD_PORT || ' ', () => {

@@ -3,10 +3,8 @@ import { v4 } from "uuid";
 import { inputSchema } from "../utils/validation";
 import { AccountDetails } from "../utils/constant/interface";
 import {
-  createDatabase,
   writeToDatabase,
   readFromDatabase,
-  bankFolder,
   bankFile,
 } from "../utils/services/createDB";
 import { generateAccountNumber, excludeProperties, excludePropertiesFromArray } from "../utils/services/service";
@@ -90,10 +88,36 @@ export const getAccountDetailsByAccountNumber = (
   next: NextFunction
 ) => {
 
+  let bankData: AccountDetails[] = [];
+
+       try{
+
+           const infos = readFromDatabase(bankFile)
+
+               if(!infos){
+
+                   return res.status(404).json({
+
+                       message: `Error reading database`,
+
+                   })
+
+               }else{
+
+                bankData = JSON.parse(infos);
+
+               }
+
+           }catch(parseError) {
+
+            bankData = [];
+            next(parseError)
+
+    }
  
   const { accountNumber } = req.body;
 
-  let bankData: AccountDetails[] = [];
+
 
   const data = readFromDatabase(bankFile);
 
@@ -178,3 +202,19 @@ export const getAllAcountDetails = (
     data: updatedDetails,
   });
 };
+
+
+export const apiHealthCheck = (req: Request, res: Response, next: NextFunction) => {
+
+  const healthCheckApi = {
+        uptime: process.uptime(),
+        message: 'OK',
+        timestamp: Date.now()
+    };
+
+    try {
+      res.send(healthCheckApi)
+    } catch (error) {
+      next(error)
+    }
+}

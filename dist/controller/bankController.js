@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllAcountDetails = exports.getAccountDetailsByAccountNumber = exports.createUserAccountDetail = void 0;
+exports.apiHealthCheck = exports.getAllAcountDetails = exports.getAccountDetailsByAccountNumber = exports.createUserAccountDetail = void 0;
 const uuid_1 = require("uuid");
 const validation_1 = require("../utils/validation");
 const createDB_1 = require("../utils/services/createDB");
@@ -60,8 +60,23 @@ const createUserAccountDetail = (req, res, next) => {
 exports.createUserAccountDetail = createUserAccountDetail;
 // Resolve a Bank Account Endpoint
 const getAccountDetailsByAccountNumber = (req, res, next) => {
-    const { accountNumber } = req.body;
     let bankData = [];
+    try {
+        const infos = (0, createDB_1.readFromDatabase)(createDB_1.bankFile);
+        if (!infos) {
+            return res.status(404).json({
+                message: `Error reading database`,
+            });
+        }
+        else {
+            bankData = JSON.parse(infos);
+        }
+    }
+    catch (parseError) {
+        bankData = [];
+        next(parseError);
+    }
+    const { accountNumber } = req.body;
     const data = (0, createDB_1.readFromDatabase)(createDB_1.bankFile);
     if (!data) {
         return res.status(400).json({
@@ -117,3 +132,17 @@ const getAllAcountDetails = (req, res, next) => {
     });
 };
 exports.getAllAcountDetails = getAllAcountDetails;
+const apiHealthCheck = (req, res, next) => {
+    const healthCheckApi = {
+        uptime: process.uptime(),
+        message: 'OK',
+        timestamp: Date.now()
+    };
+    try {
+        res.send(healthCheckApi);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+exports.apiHealthCheck = apiHealthCheck;

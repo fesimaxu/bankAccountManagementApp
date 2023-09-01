@@ -1,12 +1,12 @@
 [
   {
-    "id": "d4ca0bda-da6c-4403-845e-014a26d92779",
-    "accountName": "Igwe Henry",
-    "accountNumber": "0151000918",
-    "dateOfBirth": "30th Sept, 1980",
+    "id": "665eafa6-be49-466e-b049-0d5cdf26d294",
+    "accountName": "ikechukwu williams",
+    "accountNumber": "0151001507",
+    "dateOfBirth": "15 Oct, 1999",
     "accountType": "Savings",
-    "balance": 3000,
-    "createdAt": "2023-09-01T13:05:07.891Z",
-    "updatedAt": "2023-09-01T13:05:07.891Z"
+    "balance": 20000,
+    "createdAt": "2023-09-01T13:59:13.698Z",
+    "updatedAt": "2023-09-01T13:59:13.698Z"
   }
 ]
