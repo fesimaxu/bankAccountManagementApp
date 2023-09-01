@@ -6,7 +6,7 @@ import { userData, userDetails } from "../utils/testData";
 describe("Create a Bank Account Endpoint", ()=>{
 
     it("User should be able to create account on the app", async ()=>{
-        const user =  await supertest(app).post('/bank/createaccount')
+        const user =  await supertest(app).post('/api/createaccount')
             .send(userDetails)
     
             //test for success
@@ -18,7 +18,7 @@ describe("Create a Bank Account Endpoint", ()=>{
     })
 
     it("The data should be any object", async ()=>{
-        const response =  await supertest(app).post('/bank/createaccount')
+        const response =  await supertest(app).post('/api/createaccount')
             .send(userDetails)
     
             //test for success
@@ -28,7 +28,7 @@ describe("Create a Bank Account Endpoint", ()=>{
     it("The data should be any object with four properties", async ()=>{
 
         
-        const response =  await supertest(app).post('/bank/createaccount')
+        const response =  await supertest(app).post('/api/createaccount')
             .send(userDetails)
     
             //test for success
@@ -49,7 +49,7 @@ describe("Create a Bank Account Endpoint", ()=>{
 describe("Resolve a Bank Account Endpoint", () =>{
     it("Get Bank details by user's account number", async () => {
 
-        const user =  await supertest(app).post('/bank/createaccount')
+        const user =  await supertest(app).post('/api/createaccount')
         .send(userDetails)
 
     
@@ -57,7 +57,7 @@ describe("Resolve a Bank Account Endpoint", () =>{
         const userInfo = user.body.data
     
 
-        const { body, statusCode } = await supertest(app).get("/bank/accounts/accountnumber")
+        const { body, statusCode } = await supertest(app).get("/api/accounts/accountnumber")
         .send({accountNumber: userInfo.accountNumber})
 
        
@@ -81,7 +81,7 @@ describe("Resolve a Bank Account Endpoint", () =>{
 describe("Fetch All Bank Accounts", () =>{
     it("Get Bank all users details", async () => {
 
-        const { body, statusCode } = await supertest(app).get("/bank/accounts")
+        const { body, statusCode } = await supertest(app).get("/api/accounts")
 
         const { data } = body
         expect(data).toEqual(

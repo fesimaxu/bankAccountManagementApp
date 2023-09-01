@@ -58,7 +58,7 @@ Deployment: Render for hosting
 
 ## API Endpoints:
 
-## Endpoint 1: Create a Bank Account (POST /api/accounts)
+## Endpoint 1: Create a Bank Account (POST /api/createaccount)
 
 * Receives JSON payload with account details.
 * Validates data.
@@ -66,7 +66,7 @@ Deployment: Render for hosting
 * Stores data in the database.
 * Responds with the account number.
 
-## Endpoint 2: Resolve a Bank Account (GET /api/accounts/:accountNumber)
+## Endpoint 2: Resolve a Bank Account (GET /api/accounts/accountnumber)
 
 * Accepts an account number as a parameter.
 * Retrieves account details from the database.
@@ -95,12 +95,6 @@ Deployment: Render for hosting
 ## Versioning:
 * Implement API versioning to ensure backward compatibility.
   
-
 # Deployment
-
-## What can used for deployment
-* Docker (image)
-* docker-compose (container)
 * Render - Web server
-* DigitalOcean
 
