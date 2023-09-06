@@ -1,12 +1,242 @@
 [
   {
-    "id": "665eafa6-be49-466e-b049-0d5cdf26d294",
+    "id": "35fffa80-cc62-412c-9070-b94bf0aa8e2f",
     "accountName": "ikechukwu williams",
-    "accountNumber": "0151001507",
+    "accountNumber": "0151003428",
     "dateOfBirth": "15 Oct, 1999",
     "accountType": "Savings",
     "balance": 20000,
-    "createdAt": "2023-09-01T13:59:13.698Z",
-    "updatedAt": "2023-09-01T13:59:13.698Z"
+    "createdAt": "2023-09-02T11:07:38.078Z",
+    "updatedAt": "2023-09-02T11:07:38.078Z"
+  },
+  {
+    "id": "0c28fc7a-e8a3-4277-9cff-8e20bcfe58b0",
+    "accountName": "ikechukwu igwe",
+    "accountNumber": "0151006769",
+    "dateOfBirth": "15 Oct, 1999",
+    "accountType": "Savings",
+    "balance": 20000,
+    "createdAt": "2023-09-02T11:09:14.149Z",
+    "updatedAt": "2023-09-02T11:09:14.149Z"
+  },
+  {
+    "id": "64bafdc3-d76e-48b1-ae82-36ad36857802",
+    "accountName": "uchenna igwe",
+    "accountNumber": "0151008125",
+    "dateOfBirth": "14 Oct, 1999",
+    "accountType": "Currents",
+    "balance": 20000,
+    "createdAt": "2023-09-02T11:12:11.749Z",
+    "updatedAt": "2023-09-02T11:12:11.749Z"
+  },
+  {
+    "id": "5b1f0ecf-fe2e-4780-b2d4-f4daf5002d51",
+    "accountName": "Igwe Henry",
+    "accountNumber": "0151006789",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 3000,
+    "createdAt": "2023-09-02T12:58:56.496Z",
+    "updatedAt": "2023-09-02T12:58:56.496Z"
+  },
+  {
+    "id": "3af6292d-a03f-4958-a1ca-1198eb17f013",
+    "accountName": "Igwe Henry",
+    "accountNumber": "0151005657",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 3000,
+    "createdAt": "2023-09-02T13:36:54.917Z",
+    "updatedAt": "2023-09-02T13:36:54.917Z"
+  },
+  {
+    "id": "374a834f-f046-494c-a568-196d1fef104e",
+    "accountName": "Igwe Johnson",
+    "accountNumber": "0151008783",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Current",
+    "balance": 500000,
+    "createdAt": "2023-09-02T13:36:54.971Z",
+    "updatedAt": "2023-09-02T13:36:54.971Z"
+  },
+  {
+    "id": "15d57fbd-db24-4bb1-9c46-3f34a19de088",
+    "accountName": "Igwe Felix",
+    "accountNumber": "0151008183",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-02T13:36:55.143Z",
+    "updatedAt": "2023-09-02T13:36:55.143Z"
+  },
+  {
+    "id": "1127428e-072f-4b5b-9d47-148171d5c573",
+    "accountName": "Igwe Daniel",
+    "accountNumber": "0151008950",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-02T13:36:55.287Z",
+    "updatedAt": "2023-09-02T13:36:55.287Z"
+  },
+  {
+    "id": "e42dc251-d9eb-45d1-be70-21a8f20efec3",
+    "accountName": "Igwe Henry",
+    "accountNumber": "0151008995",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 3000,
+    "createdAt": "2023-09-04T14:51:49.986Z",
+    "updatedAt": "2023-09-04T14:51:49.986Z"
+  },
+  {
+    "id": "ede32d11-e8d0-4d9a-8cdb-f0cdbfde69ba",
+    "accountName": "Igwe Johnson",
+    "accountNumber": "0151000425",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Current",
+    "balance": 500000,
+    "createdAt": "2023-09-04T14:51:50.073Z",
+    "updatedAt": "2023-09-04T14:51:50.073Z"
+  },
+  {
+    "id": "ab91b216-aa04-4b6b-b634-6c9deefaa30e",
+    "accountName": "Igwe Felix",
+    "accountNumber": "0151004820",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-04T14:51:50.156Z",
+    "updatedAt": "2023-09-04T14:51:50.156Z"
+  },
+  {
+    "id": "30a1e9d8-c3f3-4736-9f23-34fb7528a8d7",
+    "accountName": "Igwe Daniel",
+    "accountNumber": "0151005949",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-04T14:51:50.199Z",
+    "updatedAt": "2023-09-04T14:51:50.199Z"
+  },
+  {
+    "id": "723bf4a7-dc3d-4056-a0dd-857a80660182",
+    "accountName": "Igwe Henry",
+    "accountNumber": "0151003537",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 3000,
+    "createdAt": "2023-09-04T16:45:43.342Z",
+    "updatedAt": "2023-09-04T16:45:43.342Z"
+  },
+  {
+    "id": "21ee4209-e3f4-4051-966b-89a3d404d2b7",
+    "accountName": "Igwe Johnson",
+    "accountNumber": "0151000572",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Current",
+    "balance": 500000,
+    "createdAt": "2023-09-04T16:45:43.409Z",
+    "updatedAt": "2023-09-04T16:45:43.409Z"
+  },
+  {
+    "id": "a42e12f0-50d3-4ced-8653-9fad2bd3ba6a",
+    "accountName": "Igwe Felix",
+    "accountNumber": "0151004086",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-04T16:45:43.447Z",
+    "updatedAt": "2023-09-04T16:45:43.447Z"
+  },
+  {
+    "id": "ac2a5af6-0b20-4619-b635-2620c4d77535",
+    "accountName": "Igwe Daniel",
+    "accountNumber": "0151004183",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-04T16:45:43.480Z",
+    "updatedAt": "2023-09-04T16:45:43.480Z"
+  },
+  {
+    "id": "3dc5561a-44b3-493c-ad48-46885d124633",
+    "accountName": "Igwe Henry",
+    "accountNumber": "0151001909",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 3000,
+    "createdAt": "2023-09-05T13:47:05.575Z",
+    "updatedAt": "2023-09-05T13:47:05.575Z"
+  },
+  {
+    "id": "26e671a3-9c99-43fe-bcf4-4cca1261f634",
+    "accountName": "Igwe Johnson",
+    "accountNumber": "0151002934",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Current",
+    "balance": 500000,
+    "createdAt": "2023-09-05T13:47:06.053Z",
+    "updatedAt": "2023-09-05T13:47:06.053Z"
+  },
+  {
+    "id": "a0207e53-7eae-4ec3-8aa8-16c412dc6bc4",
+    "accountName": "Igwe Felix",
+    "accountNumber": "0151003583",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-05T13:47:06.861Z",
+    "updatedAt": "2023-09-05T13:47:06.861Z"
+  },
+  {
+    "id": "ed1fb14a-85c0-414d-8ef9-4607374c0c19",
+    "accountName": "Igwe Daniel",
+    "accountNumber": "0151008374",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-05T13:47:07.261Z",
+    "updatedAt": "2023-09-05T13:47:07.261Z"
+  },
+  {
+    "id": "89498d7f-a8c2-4085-a9c4-6a0a5dc5d6eb",
+    "accountName": "Igwe Henry",
+    "accountNumber": "0151005722",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 3000,
+    "createdAt": "2023-09-05T14:03:13.493Z",
+    "updatedAt": "2023-09-05T14:03:13.493Z"
+  },
+  {
+    "id": "118a205f-fe8d-48cd-be46-102dc7ac5518",
+    "accountName": "Igwe Johnson",
+    "accountNumber": "0151000419",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Current",
+    "balance": 500000,
+    "createdAt": "2023-09-05T14:03:13.538Z",
+    "updatedAt": "2023-09-05T14:03:13.538Z"
+  },
+  {
+    "id": "cb91f665-ba43-478d-ab1d-a5cb97f7f1ce",
+    "accountName": "Igwe Felix",
+    "accountNumber": "0151004420",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-05T14:03:13.743Z",
+    "updatedAt": "2023-09-05T14:03:13.743Z"
+  },
+  {
+    "id": "84303800-75d4-4442-a993-340b6c2a746a",
+    "accountName": "Igwe Daniel",
+    "accountNumber": "0151008433",
+    "dateOfBirth": "30th Sept, 1980",
+    "accountType": "Savings",
+    "balance": 100000,
+    "createdAt": "2023-09-05T14:03:13.781Z",
+    "updatedAt": "2023-09-05T14:03:13.781Z"
   }
 ]

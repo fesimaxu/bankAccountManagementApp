@@ -3,11 +3,14 @@ import { v4 } from "uuid";
 import { inputSchema } from "../utils/validation";
 import { AccountDetails } from "../utils/constant/interface";
 import {
+  
   writeToDatabase,
   readFromDatabase,
-  bankFile,
+  bankDatabaseFile,
 } from "../utils/services/createDB";
 import { generateAccountNumber, excludeProperties, excludePropertiesFromArray } from "../utils/services/service";
+
+let allBankData: AccountDetails[] = [];
 
 // Create a Bank Account Endpoint
 export const createUserAccountDetail = (
@@ -16,10 +19,28 @@ export const createUserAccountDetail = (
   next: NextFunction
 ) => {
   try {
-    let bankData: AccountDetails[] = [];
+    
+
+    try {
+
+      const storedData = readFromDatabase(bankDatabaseFile);
+
+      if(!storedData){
+        return res.status(400).json({
+          status: "error",
+          message: `Error reading database`,
+        })
+      }
+      allBankData = JSON.parse(storedData);
+
+    } catch (parseError) {
+      allBankData = [];
+      next(parseError)
+    }
 
     const { accountName, dateOfBirth, accountType, balance } = req.body;
 
+  
 
     const error = inputSchema.safeParse({
       accountName,
@@ -36,12 +57,19 @@ export const createUserAccountDetail = (
       });
     }
 
-    const isExisting = bankData.find(
-      (account: AccountDetails) => account.accountName === accountName
+    const isExisting = allBankData.find(
+      (account: AccountDetails) =>{
+        if(account.accountName === accountName){
+          return true;
+        }
+       return false;
+      }
     );
 
+    console.log("isExisting", isExisting)
+
     if (isExisting) {
-      res.status(404).send({
+      res.status(404).json({
         status: "error",
         method: req.method,
         message: `${accountName} already exist`,
@@ -64,9 +92,11 @@ export const createUserAccountDetail = (
     const excludeKeys = ["id","dateOfBirth", "createdAt", "updatedAt"];
     const updatedDetails = excludeProperties(newAccountDetails, excludeKeys);
 
-    bankData.push(newAccountDetails);
+    console.log('updatedDetails', updatedDetails)
 
-    writeToDatabase(bankFile, bankData);
+    allBankData.push(newAccountDetails);
+
+    writeToDatabase(bankDatabaseFile, allBankData);
 
     res.status(200).json({
       status: "success",
@@ -76,7 +106,7 @@ export const createUserAccountDetail = (
 
     });
   } catch (error) {
-    next(error);
+    console.log(error)
   }
 };
 
@@ -88,38 +118,10 @@ export const getAccountDetailsByAccountNumber = (
   next: NextFunction
 ) => {
 
-  let bankData: AccountDetails[] = [];
 
-       try{
-
-           const infos = readFromDatabase(bankFile)
-
-               if(!infos){
-
-                   return res.status(404).json({
-
-                       message: `Error reading database`,
-
-                   })
-
-               }else{
-
-                bankData = JSON.parse(infos);
-
-               }
-
-           }catch(parseError) {
-
-            bankData = [];
-            next(parseError)
-
-    }
- 
   const { accountNumber } = req.body;
 
-
-
-  const data = readFromDatabase(bankFile);
+  const data = readFromDatabase(bankDatabaseFile);
 
   if (!data) {
     return res.status(400).json({
@@ -129,13 +131,9 @@ export const getAccountDetailsByAccountNumber = (
     });
   }
 
-  bankData = JSON.parse(data);
+  allBankData = JSON.parse(data);
 
- 
-
-
-
-  const isExisting = bankData.filter((account: AccountDetails) => {
+  const isExisting = allBankData.filter((account: AccountDetails) => {
 
     return account.accountNumber === accountNumber
   })
@@ -178,9 +176,8 @@ export const getAllAcountDetails = (
   res: Response,
   next: NextFunction
 ) => {
-  let bankData: AccountDetails[] = [];
 
-  const data = readFromDatabase(bankFile);
+  const data = readFromDatabase(bankDatabaseFile);
 
   if (!data) {
     return res.status(400).json({
@@ -190,16 +187,16 @@ export const getAllAcountDetails = (
     });
   }
 
-  bankData = JSON.parse(data);
+  allBankData = JSON.parse(data);
 
   const excludeKeys = ["id","dateOfBirth", "createdAt", "updatedAt"];
-  const updatedDetails = excludePropertiesFromArray(bankData, excludeKeys);
+  const updatedDetails = excludePropertiesFromArray(allBankData, excludeKeys);
 
   res.status(200).json({
     status: "success",
     method: req.method,
     message: "all account details successfully found",
-    data: updatedDetails,
+    data: updatedDetails
   });
 };
 

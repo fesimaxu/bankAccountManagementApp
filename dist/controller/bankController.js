@@ -5,10 +5,24 @@ const uuid_1 = require("uuid");
 const validation_1 = require("../utils/validation");
 const createDB_1 = require("../utils/services/createDB");
 const service_1 = require("../utils/services/service");
+let allBankData = [];
 // Create a Bank Account Endpoint
 const createUserAccountDetail = (req, res, next) => {
     try {
-        let bankData = [];
+        try {
+            const storedData = (0, createDB_1.readFromDatabase)(createDB_1.bankDatabaseFile);
+            if (!storedData) {
+                return res.status(400).json({
+                    status: "error",
+                    message: `Error reading database`,
+                });
+            }
+            allBankData = JSON.parse(storedData);
+        }
+        catch (parseError) {
+            allBankData = [];
+            next(parseError);
+        }
         const { accountName, dateOfBirth, accountType, balance } = req.body;
         const error = validation_1.inputSchema.safeParse({
             accountName,
@@ -23,9 +37,15 @@ const createUserAccountDetail = (req, res, next) => {
                 message: error.error.issues
             });
         }
-        const isExisting = bankData.find((account) => account.accountName === accountName);
+        const isExisting = allBankData.find((account) => {
+            if (account.accountName === accountName) {
+                return true;
+            }
+            return false;
+        });
+        console.log("isExisting", isExisting);
         if (isExisting) {
-            res.status(404).send({
+            res.status(404).json({
                 status: "error",
                 method: req.method,
                 message: `${accountName} already exist`,
@@ -44,8 +64,9 @@ const createUserAccountDetail = (req, res, next) => {
         };
         const excludeKeys = ["id", "dateOfBirth", "createdAt", "updatedAt"];
         const updatedDetails = (0, service_1.excludeProperties)(newAccountDetails, excludeKeys);
-        bankData.push(newAccountDetails);
-        (0, createDB_1.writeToDatabase)(createDB_1.bankFile, bankData);
+        console.log('updatedDetails', updatedDetails);
+        allBankData.push(newAccountDetails);
+        (0, createDB_1.writeToDatabase)(createDB_1.bankDatabaseFile, allBankData);
         res.status(200).json({
             status: "success",
             method: req.method,
@@ -54,30 +75,14 @@ const createUserAccountDetail = (req, res, next) => {
         });
     }
     catch (error) {
-        next(error);
+        console.log(error);
     }
 };
 exports.createUserAccountDetail = createUserAccountDetail;
 // Resolve a Bank Account Endpoint
 const getAccountDetailsByAccountNumber = (req, res, next) => {
-    let bankData = [];
-    try {
-        const infos = (0, createDB_1.readFromDatabase)(createDB_1.bankFile);
-        if (!infos) {
-            return res.status(404).json({
-                message: `Error reading database`,
-            });
-        }
-        else {
-            bankData = JSON.parse(infos);
-        }
-    }
-    catch (parseError) {
-        bankData = [];
-        next(parseError);
-    }
     const { accountNumber } = req.body;
-    const data = (0, createDB_1.readFromDatabase)(createDB_1.bankFile);
+    const data = (0, createDB_1.readFromDatabase)(createDB_1.bankDatabaseFile);
     if (!data) {
         return res.status(400).json({
             status: "error",
@@ -85,8 +90,8 @@ const getAccountDetailsByAccountNumber = (req, res, next) => {
             message: "Database is empty",
         });
     }
-    bankData = JSON.parse(data);
-    const isExisting = bankData.filter((account) => {
+    allBankData = JSON.parse(data);
+    const isExisting = allBankData.filter((account) => {
         return account.accountNumber === accountNumber;
     });
     if (isExisting.length === 0) {
@@ -112,8 +117,7 @@ const getAccountDetailsByAccountNumber = (req, res, next) => {
 exports.getAccountDetailsByAccountNumber = getAccountDetailsByAccountNumber;
 // Fetch All Bank Accounts
 const getAllAcountDetails = (req, res, next) => {
-    let bankData = [];
-    const data = (0, createDB_1.readFromDatabase)(createDB_1.bankFile);
+    const data = (0, createDB_1.readFromDatabase)(createDB_1.bankDatabaseFile);
     if (!data) {
         return res.status(400).json({
             status: "error",
@@ -121,14 +125,14 @@ const getAllAcountDetails = (req, res, next) => {
             message: "Database is empty",
         });
     }
-    bankData = JSON.parse(data);
+    allBankData = JSON.parse(data);
     const excludeKeys = ["id", "dateOfBirth", "createdAt", "updatedAt"];
-    const updatedDetails = (0, service_1.excludePropertiesFromArray)(bankData, excludeKeys);
+    const updatedDetails = (0, service_1.excludePropertiesFromArray)(allBankData, excludeKeys);
     res.status(200).json({
         status: "success",
         method: req.method,
         message: "all account details successfully found",
-        data: updatedDetails,
+        data: updatedDetails
     });
 };
 exports.getAllAcountDetails = getAllAcountDetails;

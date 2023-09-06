@@ -1,6 +1,6 @@
 import supertest from "supertest";
 import app from "../app";
-import { userData, userDetails } from "../utils/testData";
+import { userData, userDetails, user2Details, user3Details, user4Details } from "../utils/testData";
 
 
 describe("Create a Bank Account Endpoint", ()=>{
@@ -15,11 +15,14 @@ describe("Create a Bank Account Endpoint", ()=>{
             }else if(!userDetails.accountName){
             expect(user.body.message).toBe( `${userDetails.accountName} already exist`)
             }
+
+            
     })
 
     it("The data should be any object", async ()=>{
         const response =  await supertest(app).post('/api/createaccount')
-            .send(userDetails)
+            .send(user2Details)
+            console.log('rsponse',response.body)
     
             //test for success
             expect(response.body.data).toMatchObject(userData);
@@ -29,7 +32,7 @@ describe("Create a Bank Account Endpoint", ()=>{
 
         
         const response =  await supertest(app).post('/api/createaccount')
-            .send(userDetails)
+            .send(user3Details)
     
             //test for success
             const { data } = response.body
@@ -50,7 +53,7 @@ describe("Resolve a Bank Account Endpoint", () =>{
     it("Get Bank details by user's account number", async () => {
 
         const user =  await supertest(app).post('/api/createaccount')
-        .send(userDetails)
+        .send(user4Details)
 
     
         //test for success
@@ -82,6 +85,8 @@ describe("Fetch All Bank Accounts", () =>{
     it("Get Bank all users details", async () => {
 
         const { body, statusCode } = await supertest(app).get("/api/accounts")
+
+        // console.log('body   ', body)
 
         const { data } = body
         expect(data).toEqual(

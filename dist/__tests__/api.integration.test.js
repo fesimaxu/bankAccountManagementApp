@@ -29,13 +29,14 @@ describe("Create a Bank Account Endpoint", () => {
     }));
     it("The data should be any object", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield (0, supertest_1.default)(app_1.default).post('/api/createaccount')
-            .send(testData_1.userDetails);
+            .send(testData_1.user2Details);
+        console.log('rsponse', response.body);
         //test for success
         expect(response.body.data).toMatchObject(testData_1.userData);
     }));
     it("The data should be any object with four properties", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield (0, supertest_1.default)(app_1.default).post('/api/createaccount')
-            .send(testData_1.userDetails);
+            .send(testData_1.user3Details);
         //test for success
         const { data } = response.body;
         expect(data).toEqual(expect.objectContaining({
@@ -49,7 +50,7 @@ describe("Create a Bank Account Endpoint", () => {
 describe("Resolve a Bank Account Endpoint", () => {
     it("Get Bank details by user's account number", () => __awaiter(void 0, void 0, void 0, function* () {
         const user = yield (0, supertest_1.default)(app_1.default).post('/api/createaccount')
-            .send(testData_1.userDetails);
+            .send(testData_1.user4Details);
         //test for success
         const userInfo = user.body.data;
         const { body, statusCode } = yield (0, supertest_1.default)(app_1.default).get("/api/accounts/accountnumber")
@@ -67,6 +68,7 @@ describe("Resolve a Bank Account Endpoint", () => {
 describe("Fetch All Bank Accounts", () => {
     it("Get Bank all users details", () => __awaiter(void 0, void 0, void 0, function* () {
         const { body, statusCode } = yield (0, supertest_1.default)(app_1.default).get("/api/accounts");
+        // console.log('body   ', body)
         const { data } = body;
         expect(data).toEqual(expect.arrayContaining([
             expect.objectContaining({

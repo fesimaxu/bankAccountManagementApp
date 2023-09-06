@@ -37,11 +37,11 @@ const BUILD_PORT = PORT;
 
 
 
-app.listen(BUILD_PORT || ' ', () => {
+// app.listen(BUILD_PORT || ' ', () => {
 
-    console.log(`Bank Account Management APP running at http://localhost:${BUILD_PORT}/`);
+//     console.log(`Bank Account Management APP running at http://localhost:${BUILD_PORT}/`);
 
-})
+// })
 
 
 

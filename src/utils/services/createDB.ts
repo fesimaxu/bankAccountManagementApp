@@ -2,8 +2,8 @@ import fs from "fs";
 import path from "path";
 
 //bank file path
-export const bankFolder = path.join(__dirname, '../../../src/model');
-export const bankFile = path.join(bankFolder, 'bank.json');
+export const bankDatabaseFolder = path.join(__dirname, '../../../src/model');
+export const bankDatabaseFile = path.join(bankDatabaseFolder, 'bank.json');
 
 // read from database
 export const readFromDatabase =  (filePath: string) => {
@@ -11,10 +11,10 @@ export const readFromDatabase =  (filePath: string) => {
 }
 
 // write to database
-export const writeToDatabase =  (filePath: string, datas: any[]) => {
+export const writeToDatabase =  (filePath: string, datas: any) => {
 const stringData = JSON.stringify(datas, null, 2)
 
-   fs.writeFileSync(filePath, stringData);
+   fs.writeFileSync(filePath, stringData, 'utf8');
 }
 
 //creating a database if doesn't exist 

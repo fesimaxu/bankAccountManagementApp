@@ -27,7 +27,7 @@ app.all('*', errorMessages_1.error404);
 app.use(errorMessages_1.error500);
 // active port
 const BUILD_PORT = PORT;
-app.listen(BUILD_PORT || ' ', () => {
-    console.log(`Bank Account Management APP running at http://localhost:${BUILD_PORT}/`);
-});
+// app.listen(BUILD_PORT || ' ', () => {
+//     console.log(`Bank Account Management APP running at http://localhost:${BUILD_PORT}/`);
+// })
 exports.default = app;
